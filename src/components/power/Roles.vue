@@ -4,7 +4,7 @@
  * @Author: wsz
  * @Date: 2021-06-01 11:43:51
  * @LastEditors: wsz
- * @LastEditTime: 2021-06-02 16:39:21
+ * @LastEditTime: 2021-06-02 21:49:58
 -->
 <template>
   <div>
@@ -155,7 +155,6 @@ export default {
       if (res.meta.status !== 200)
         return this.$message.error('获取角色列表失败')
       this.roleList = res.data
-      console.log(this.roleList)
     },
     // 根据id删除对应的权限
     async removeRightsById(role, rightId) {

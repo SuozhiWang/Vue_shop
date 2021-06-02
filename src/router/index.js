@@ -4,7 +4,7 @@
  * @Author: wsz
  * @Date: 2021-05-25 22:41:48
  * @LastEditors: wsz
- * @LastEditTime: 2021-06-01 11:46:36
+ * @LastEditTime: 2021-06-02 17:49:29
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -14,6 +14,7 @@ import Welcome from '../components/Welcome.vue'
 import Users from '../components/user/Users.vue'
 import Rights from '../components/power/Rights.vue'
 import Roles from '../components/power/Roles.vue'
+import Cate from '../components/goods/Cate.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,10 @@ const router = new VueRouter({
         {
           path: '/roles',
           component: Roles
+        },
+        {
+          path: '/categories',
+          component: Cate
         }
       ]
     }

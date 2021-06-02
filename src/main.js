@@ -4,7 +4,7 @@
  * @Author: wsz
  * @Date: 2021-05-25 22:41:48
  * @LastEditors: wsz
- * @LastEditTime: 2021-05-30 21:37:06
+ * @LastEditTime: 2021-06-02 19:09:41
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -14,6 +14,7 @@ import './plugins/element.js'
 import './assets/css/global.css'
 // 导入字体图标
 import './assets/fonts/iconfont.css'
+import TreeTable from 'vue-table-with-tree-grid'
 // 导入axios包
 import axios from 'axios'
 // 配置请求的根路径
@@ -27,6 +28,9 @@ axios.interceptors.request.use(config => {
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
+
+// 将TreeTable注册为全局可用组件
+Vue.component('tree-table',TreeTable)
 
 new Vue({
   router,

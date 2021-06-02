@@ -4,7 +4,7 @@
  * @Author: wsz
  * @Date: 2021-05-30 16:09:33
  * @LastEditors: wsz
- * @LastEditTime: 2021-05-31 16:22:29
+ * @LastEditTime: 2021-06-02 19:39:12
 -->
 <template>
   <el-container class="home-container">
@@ -105,7 +105,7 @@ export default {
       const { data: res } = await this.$http.get('menus')
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menulist = res.data
-      console.log(res)
+      // console.log(res)
     },
     // 点击按钮，切换菜单的折叠与展开
     toggleCollapse() {
