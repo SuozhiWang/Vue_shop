@@ -4,7 +4,7 @@
  * @Author: wsz
  * @Date: 2021-05-29 20:18:43
  * @LastEditors: wsz
- * @LastEditTime: 2021-06-02 20:53:10
+ * @LastEditTime: 2021-06-02 22:39:57
  */
 import Vue from 'vue'
 // import { Button } from 'element-ui'
@@ -42,7 +42,10 @@ import {
     Tree,
     Select,
     Option,
-    Cascader
+    Cascader,
+    Alert,
+    Tabs,
+    TabPane
 } from 'element-ui'
 
 Vue.use(Button)
@@ -73,6 +76,9 @@ Vue.use(Tree)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(Cascader)
+Vue.use(Alert)
+Vue.use(Tabs)
+Vue.use(TabPane)
 // 需要将Message全局挂载
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
