@@ -4,7 +4,7 @@
  * @Author: wsz
  * @Date: 2021-06-02 22:04:03
  * @LastEditors: wsz
- * @LastEditTime: 2021-06-03 15:29:44
+ * @LastEditTime: 2021-06-03 17:44:11
 -->
 <template>
   <div>
@@ -22,6 +22,7 @@
         type="warning"
         show-icon
         :closable="false"
+        center
       >
       </el-alert>
       <!-- 选择商品分类区 -->

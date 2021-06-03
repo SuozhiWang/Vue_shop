@@ -4,7 +4,7 @@
  * @Author: wsz
  * @Date: 2021-05-25 22:41:48
  * @LastEditors: wsz
- * @LastEditTime: 2021-06-02 22:06:58
+ * @LastEditTime: 2021-06-03 17:07:26
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -16,6 +16,8 @@ import Rights from '../components/power/Rights.vue'
 import Roles from '../components/power/Roles.vue'
 import Cate from '../components/goods/Cate.vue'
 import Params from '../components/goods/Params.vue'
+import GoodsList from '../components/goods/List.vue'
+import Add from '../components/goods/Add.vue'
 
 Vue.use(VueRouter)
 
@@ -55,6 +57,14 @@ const router = new VueRouter({
         {
           path: '/params',
           component: Params
+        },
+        {
+          path: '/goods',
+          component: GoodsList
+        },
+        {
+          path: '/goods/add',
+          component: Add
         }
       ]
     }
