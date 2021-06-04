@@ -4,7 +4,7 @@
  * @Author: wsz
  * @Date: 2021-06-02 22:04:03
  * @LastEditors: wsz
- * @LastEditTime: 2021-06-03 17:44:11
+ * @LastEditTime: 2021-06-04 10:44:15
 -->
 <template>
   <div>
@@ -372,10 +372,10 @@ export default {
       })
     },
     // 点击按钮，展示修改对话框
-    async showEditDialog(attr_id) {
+    async showEditDialog(attrId) {
       // 查询当前参数的信息
       const { data: res } = await this.$http.get(
-        `categories/${this.catId}/attributes/${attr_id}`,
+        `categories/${this.catId}/attributes/${attrId}`,
         {
           params: {
             attr_sel: this.activeName,
@@ -411,7 +411,7 @@ export default {
       })
     },
     // 根据ID删除参数操作
-    async removeParams(attr_id) {
+    async removeParams(attrId) {
       const confirmResult = await this.$confirm(
         '此操作将永久删除该参数, 是否继续?',
         '提示',
@@ -426,7 +426,7 @@ export default {
         return this.$message.info('已取消删除操作')
       }
       const { data: res } = await this.$http.delete(
-        `categories/${this.catId}/attributes/${attr_id}`
+        `categories/${this.catId}/attributes/${attrId}`
       )
       if (res.mata.status !== 200) {
         return this.$message.error('删除参数失败！')

@@ -10,50 +10,27 @@
     <el-card>
       <el-row>
         <el-col>
-          <el-button type="primary" @click="showAddCateDialog"
-            >添加分类</el-button
-          >
+          <el-button type="primary" @click="showAddCateDialog">添加分类</el-button>
         </el-col>
       </el-row>
 
       <!-- 表格区 -->
-      <tree-table
-        class="treeTable"
-        :data="cateList"
-        :columns="columns"
-        :selection-type="false"
-        :expand-type="false"
-        show-index
-        border
-      >
+      <tree-table class="treeTable" :data="cateList" :columns="columns" :selection-type="false" :expand-type="false" show-index border>
         <!-- 是否有效 -->
         <template slot="isOk" slot-scope="scope">
-          <i
-            class="el-icon-success"
-            v-if="scope.row.cate_deleted === false"
-            style="color: lightgreen"
-          ></i>
+          <i class="el-icon-success" v-if="scope.row.cate_deleted === false" style="color: lightgreen"></i>
           <i class="el-icon-error" v-else style="color: red"></i>
         </template>
         <!-- 排序 -->
         <template slot="order" slot-scope="scope">
           <el-tag size="mini" v-if="scope.row.cat_level === 0">一级</el-tag>
-          <el-tag
-            type="success"
-            size="mini"
-            v-else-if="scope.row.cat_level === 1"
-            >二级</el-tag
-          >
+          <el-tag type="success" size="mini" v-else-if="scope.row.cat_level === 1">二级</el-tag>
           <el-tag type="warning" size="mini" v-else>三级</el-tag>
         </template>
         <!-- 操作 -->
-        <template slot="opt" slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" size="mini"
-            >编辑</el-button
-          >
-          <el-button type="danger" icon="el-icon-delete" size="mini"
-            >删除</el-button
-          >
+        <template slot="opt">
+          <el-button type="primary" icon="el-icon-edit" size="mini">编辑</el-button>
+          <el-button type="danger" icon="el-icon-delete" size="mini">删除</el-button>
         </template>
       </tree-table>
       <!-- 分页区 -->
@@ -69,40 +46,21 @@
       </el-pagination>
     </el-card>
     <!-- 添加分类的对话框 -->
-    <el-dialog
-      title="添加分类"
-      :visible.sync="addCateDialogVisible"
-      width="50%" @close="addCateDialogClosed"
-    >
+    <el-dialog title="添加分类" :visible.sync="addCateDialogVisible" width="50%" @close="addCateDialogClosed">
       <!-- 添加分类的表单 -->
-      <el-form
-        :model="addCateForm"
-        :rules="addCateFormRules"
-        ref="addCateFormRef"
-        label-width="100px"
-      >
+      <el-form :model="addCateForm" :rules="addCateFormRules" ref="addCateFormRef" label-width="100px">
         <el-form-item label="分类名称：" prop="cat_name">
           <el-input v-model="addCateForm.cat_name"></el-input>
         </el-form-item>
         <el-form-item label="父级分类：">
           <!-- options用于指定数据源 -->
           <!-- props用于指定配置对象 -->
-          <el-cascader
-            expand-trigger="hover"
-            :options="parentCateList"
-            :props="cascaderProps"
-            v-model="selectedKeys"
-            @change="parentCateChanged"
-            clearable
-            change-on-select
-          ></el-cascader>
+          <el-cascader expand-trigger="hover" :options="parentCateList" :props="cascaderProps" v-model="selectedKeys" @change="parentCateChanged" clearable change-on-select></el-cascader>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="addCateDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="addCate"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="addCate">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -164,9 +122,7 @@ export default {
       },
       // 添加分类的表单数据的验证规则对象
       addCateFormRules: {
-        cat_name: [
-          { required: true, message: '请输入分类名称', trigger: 'blur' },
-        ],
+        cat_name: [{ required: true, message: '请输入分类名称', trigger: 'blur' }],
       },
       // 父级分类的列表
       parentCateList: [],
@@ -229,24 +185,22 @@ export default {
       // console.log(this.selectedKeys)
       if (this.selectedKeys.length > 0) {
         // 父级分类的id
-        this.addCateForm.cat_pid = this.selectedKeys[
-          this.selectedKeys.length - 1
-        ]
+        this.addCateForm.cat_pid = this.selectedKeys[this.selectedKeys.length - 1]
         // 为当前分类的等级赋值
         this.addCateForm.cat_level = this.selectedKeys.length
         return
-      }else{
+      } else {
         this.addCateForm.cat_pid = 0
         // 为当前分类的等级赋值
         this.addCateForm.cat_level = 0
       }
     },
     // 点击按钮，添加新的分类
-    addCate(){
-      this.$refs.addCateFormRef.validate(async valid => {
-        if(!valid) return 
-        const {data:res} = await this.$http.post('categories',this.addCateForm)
-        if(res.meta.status !== 201){
+    addCate() {
+      this.$refs.addCateFormRef.validate(async (valid) => {
+        if (!valid) return
+        const { data: res } = await this.$http.post('categories', this.addCateForm)
+        if (res.meta.status !== 201) {
           return this.$message.error('添加新的分类数据失败！')
         }
         this.$message.success('添加新的分类数据成功！')
@@ -255,12 +209,12 @@ export default {
       })
     },
     // 监听对话框的关闭事件 重置表单数据
-    addCateDialogClosed(){
+    addCateDialogClosed() {
       this.$refs.addCateFormRef.resetFields()
       this.selectedKeys = []
       this.addCateForm.cat_level = 0
       this.addCateForm.cat_pid = 0
-    }
+    },
   },
   components: {},
 }

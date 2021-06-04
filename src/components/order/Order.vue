@@ -4,7 +4,7 @@
  * @Author: wsz
  * @Date: 2021-06-03 22:25:35
  * @LastEditors: wsz
- * @LastEditTime: 2021-06-03 23:42:04
+ * @LastEditTime: 2021-06-04 10:42:41
 -->
 <template>
   <div>
@@ -44,7 +44,7 @@
           </template>
         </el-table-column>
         <el-table-column label="操作">
-          <template slot-scope="scope">
+          <template>
             <el-button
               type="primary"
               icon="el-icon-edit"
