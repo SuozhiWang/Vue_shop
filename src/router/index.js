@@ -4,7 +4,7 @@
  * @Author: wsz
  * @Date: 2021-05-25 22:41:48
  * @LastEditors: wsz
- * @LastEditTime: 2021-06-03 22:42:30
+ * @LastEditTime: 2021-06-04 09:53:38
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -19,6 +19,7 @@ import Params from '../components/goods/Params.vue'
 import GoodsList from '../components/goods/List.vue'
 import Add from '../components/goods/Add.vue'
 import Order from '../components/order/Order.vue'
+import Report from '../components/report/Report.vue'
 
 Vue.use(VueRouter)
 
@@ -70,6 +71,10 @@ const router = new VueRouter({
         {
           path: '/orders',
           component: Order
+        },
+        {
+          path: '/reports',
+          component: Report
         }
       ]
     }
